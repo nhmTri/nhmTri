@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 230" width="1000" height="230" role="img" aria-label="Nguyen Hoang Minh Tri, Operations Data Analyst. From messy to meaningful.">
+  <defs>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2456D6"/><stop offset="1" stop-color="#2456D6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2456D6" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#2456D6" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#2456D6" stop-opacity="0"/>
+    </linearGradient>
+    <style>
+      .nm{font:700 40px 'Segoe UI',Helvetica,Arial,sans-serif;fill:#2456D6}
+      .rl{font:500 14px ui-monospace,'SF Mono',Menlo,monospace;fill:#8892A6;letter-spacing:.22em}
+      .tg{font:italic 22px Georgia,'Times New Roman',serif;fill:#6B7487}
+      .tg tspan{fill:#2456D6;font-style:normal;font-weight:700}
+      .st{font:500 11px ui-monospace,Menlo,monospace;fill:#8892A6;letter-spacing:.14em}
+      .sv{font:700 17px 'Segoe UI',Helvetica,sans-serif;fill:#3C4354}
+      .cn{font:600 11px ui-monospace,Menlo,monospace;fill:#2456D6;letter-spacing:.1em}
+      .box{fill:none;stroke:#2456D6;stroke-opacity:.35;stroke-width:1.4}
+      .wire{stroke:#2456D6;stroke-opacity:.3;stroke-width:1.4;fill:none}
+      .pk{fill:#2456D6}
+      .jit{animation:j 3.2s ease-in-out infinite}
+      @keyframes j{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+      .swp{animation:s 6s cubic-bezier(.4,0,.5,1) infinite}
+      @keyframes s{0%,70%{transform:translateX(-260px)}100%{transform:translateX(1060px)}}
+    </style>
+  </defs>
+
+  <rect class="swp" x="0" y="0" width="240" height="230" fill="url(#sweep)"/>
+  <text class="nm" x="40" y="62">Nguyen Hoang Minh Tri</text>
+  <rect x="40" y="76" width="420" height="2.5" fill="url(#rule)"/>
+  <text class="rl" x="40" y="100">OPERATIONS DATA ANALYST &#183; NIELSENIQ</text>
+  <text class="tg jit" x="40" y="136">From <tspan>messy</tspan> to <tspan>meaningful</tspan>.</text>
+
+  <g transform="translate(40,164)">
+    <rect class="box" x="0" y="0" width="118" height="40" rx="9"/>
+    <text class="cn" x="59" y="18" text-anchor="middle">COLLECT</text>
+    <text class="st" x="59" y="32" text-anchor="middle">100,000+ rows</text>
+    <rect class="box" x="146" y="0" width="118" height="40" rx="9"/>
+    <text class="cn" x="205" y="18" text-anchor="middle">CLEAN</text>
+    <text class="st" x="205" y="32" text-anchor="middle">rules &#183; thresholds</text>
+    <rect class="box" x="292" y="0" width="118" height="40" rx="9"/>
+    <text class="cn" x="351" y="18" text-anchor="middle">MODEL</text>
+    <text class="st" x="351" y="32" text-anchor="middle">segment &#183; test</text>
+    <rect class="box" x="438" y="0" width="118" height="40" rx="9" stroke-opacity=".8"/>
+    <text class="cn" x="497" y="18" text-anchor="middle">INSIGHT</text>
+    <text class="st" x="497" y="32" text-anchor="middle">a decision</text>
+    <path class="wire" d="M118 20 H146 M264 20 H292 M410 20 H438"/>
+    <circle class="pk" r="3.2"><animateMotion dur="3.4s" repeatCount="indefinite" path="M118 20 H146 M264 20 H292 M410 20 H438"/></circle>
+    <circle class="pk" r="3.2" opacity=".6"><animateMotion dur="3.4s" begin="-1.7s" repeatCount="indefinite" path="M118 20 H146 M264 20 H292 M410 20 H438"/></circle>
+  </g>
+
+  <g transform="translate(690,44)">
+    <text class="st" x="0" y="0">ELEVEN MONTHS AT NIELSENIQ</text>
+    <text class="sv" x="0" y="30">41,037 <tspan class="st">samples checked</tspan></text>
+    <text class="sv" x="0" y="60">6% &#8594; 2% <tspan class="st">minor error</tspan></text>
+    <text class="sv" x="0" y="90">0.2% <tspan class="st">major, vs a 5% ceiling</tspan></text>
+    <text class="sv" x="0" y="120">&#8722;30% <tspan class="st">project issue rate</tspan></text>
+  </g>
+</svg>
