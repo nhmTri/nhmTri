@@ -23,25 +23,9 @@ Outside work I build the pipelines behind the analysis — Spark at 10M rows, Ka
 ---
 
 <!--LIVE:start-->
-### What moved recently
 
-| | | |
-|---|---|---|
-| **[nhmTri](https://github.com/nhmTri/nhmTri)** | fix: read commit history and the test workflow, not the events feed | `0m ago` |
-| **[Job_realtime](https://github.com/nhmTri/Job_realtime)** | docs: animate the architecture diagram | `33m ago` |
-| **[rfm-segmentation-sql](https://github.com/nhmTri/rfm-segmentation-sql)** | feat: animated segment matrix and an interactive cut-off demo on Pag… | `33m ago` |
-| **[voucher-abuse-detection](https://github.com/nhmTri/voucher-abuse-detection)** | feat: animated rule diagram and an interactive threshold demo on Pag… | `33m ago` |
-| **[Brazilian_E_Commerce](https://github.com/nhmTri/Brazilian_E_Commerce)** | Merge pull request #4 from nhmTri/feat/complete-pipeline | `14w ago` |
+_The live block — what moved recently, CI status, twelve weeks of commits and the language split — is written here by [`scripts/refresh.py`](scripts/refresh.py) on the first run of the workflow, then every morning after that._
 
-### Every repository below runs its own tests
-
-[![voucher-abuse-detection](https://img.shields.io/badge/voucher--abuse--detection-passing-1F7A5A?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/nhmTri/voucher-abuse-detection/actions) [![rfm-segmentation-sql](https://img.shields.io/badge/rfm--segmentation--sql-passing-1F7A5A?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/nhmTri/rfm-segmentation-sql/actions) [![Job_realtime](https://img.shields.io/badge/Job_realtime-passing-1F7A5A?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/nhmTri/Job_realtime/actions)
-
-<img src="assets/activity.svg" alt="Commits across public repositories over the last twelve weeks" width="100%">
-
-<img src="assets/stack.svg" alt="Language split across public repositories" width="100%">
-
-<sub>Regenerated from the GitHub API every morning · last run 01 Oct 2026, 14:18 UTC</sub>
 <!--LIVE:end-->
 
 ---
@@ -62,6 +46,7 @@ Not a screenshot — a page where you move the thresholds and watch the answer c
 | [voucher-abuse-detection](https://github.com/nhmTri/voucher-abuse-detection) | Pair-level network rules on campaign transactions | Closed ring of **3 buyers, 3 sellers** on 1-VND orders, at **100% precision** against the planted truth |
 | [rfm-segmentation-sql](https://github.com/nhmTri/rfm-segmentation-sql) | RFM scoring with CTEs and window functions, every cut-off a parameter | Champions spend **39% more** at the same frequency |
 | [Job_realtime](https://github.com/nhmTri/Job_realtime) | Kafka → Spark Streaming → Cassandra → MySQL, with CDC and Grafana | 2 live sources, postings visible in minutes, fully replayable |
+| [Brazilian_E_Commerce](https://github.com/nhmTri/Brazilian_E_Commerce) | Medallion pipeline on Olist: DQ gate, SCD2 dimensions, streaming fact layer | Late delivery predicts a bad review at **r = 0.68** |
 | [FPT_processing_bigdata](https://github.com/nhmTri/FPT_processing_bigdata) | Staged Spark batch over nested JSON | 10M rows → 1M OLAP rows in **under 250s** |
 
 Full case studies, with the analysis and the reasoning: **[portfolio](https://portfolionhmtri.netlify.app)**

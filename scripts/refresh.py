@@ -40,6 +40,7 @@ FEATURED = {
     "voucher-abuse-detection": "sql-tests.yml",
     "rfm-segmentation-sql": "sql-tests.yml",
     "Job_realtime": "build.yml",
+    "Brazilian_E_Commerce": "checks.yml",
 }
 
 START = "<!--LIVE:start-->"
