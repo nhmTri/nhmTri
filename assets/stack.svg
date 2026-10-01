@@ -10,9 +10,9 @@
     @media (prefers-color-scheme:dark){.l{fill:#c3c2b7}}
   </style>
   <text class="t" x="10" y="14">WHAT THE PUBLIC REPOSITORIES ARE WRITTEN IN</text>
-  <rect class="s" x="10.0" y="26" width="621.4" height="16" rx="3" fill="#898781" style="animation-delay:0.00s"/>
-  <rect class="s" x="633.4" y="26" width="130.8" height="16" rx="3" fill="#5598e7" style="animation-delay:0.08s"/>
-  <rect class="s" x="766.2" y="26" width="36.8" height="16" rx="3" fill="#184f95" style="animation-delay:0.16s"/>
+  <rect class="s" x="10.0" y="26" width="619.2" height="16" rx="3" fill="#898781" style="animation-delay:0.00s"/>
+  <rect class="s" x="631.2" y="26" width="130.3" height="16" rx="3" fill="#5598e7" style="animation-delay:0.08s"/>
+  <rect class="s" x="763.5" y="26" width="39.5" height="16" rx="3" fill="#184f95" style="animation-delay:0.16s"/>
   <rect class="s" x="805.0" y="26" width="3.0" height="16" rx="3" fill="#6f6d68" style="animation-delay:0.24s"/>
   <rect class="s" x="810.0" y="26" width="3.0" height="16" rx="3" fill="#52514e" style="animation-delay:0.32s"/>
   <rect class="s" x="815.0" y="26" width="3.0" height="16" rx="3" fill="#86b6ef" style="animation-delay:0.40s"/>
