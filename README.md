@@ -23,23 +23,9 @@ Outside work I build the pipelines behind the analysis — Spark at 10M rows, Ka
 ---
 
 <!--LIVE:start-->
-### What moved recently
 
-| | | |
-|---|---|---|
-| **[voucher-abuse-detection](https://github.com/nhmTri/voucher-abuse-detection)** | — | `0m ago` |
-| **[Job_realtime](https://github.com/nhmTri/Job_realtime)** | — | `44m ago` |
-| **[nhmTri](https://github.com/nhmTri/nhmTri)** | — | `3h ago` |
+_The live block — what moved recently, CI status, twelve weeks of commits and the language split — is written here by [`scripts/refresh.py`](scripts/refresh.py) on the first run of the workflow, then every morning after that._
 
-### Every repository below runs its own tests
-
-[![voucher-abuse-detection](https://img.shields.io/badge/voucher--abuse--detection-failing-C0392B?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/nhmTri/voucher-abuse-detection/actions) [![rfm-segmentation-sql](https://img.shields.io/badge/rfm--segmentation--sql-failing-C0392B?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/nhmTri/rfm-segmentation-sql/actions) [![Job_realtime](https://img.shields.io/badge/Job_realtime-passing-1F7A5A?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/nhmTri/Job_realtime/actions)
-
-<img src="assets/activity.svg" alt="Commits pushed to public repositories over the last twelve weeks" width="100%">
-
-<img src="assets/stack.svg" alt="Language split across public repositories" width="100%">
-
-<sub>Regenerated from the GitHub API every morning · last run 01 Oct 2026, 13:45 UTC</sub>
 <!--LIVE:end-->
 
 ---

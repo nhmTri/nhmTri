@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Regenerate the live parts of the profile README.
 
-Run by .github/workflows/refresh.yml once a day. Reads only public GitHub API
-endpoints, writes three things and nothing else:
+Run by .github/workflows/refresh.yml every morning. Reads only public GitHub
+API endpoints and writes three things, nothing else:
 
-  assets/activity.svg   twelve weeks of push activity, one bar per week
+  assets/activity.svg   twelve weeks of commits, one bar per week
   assets/stack.svg      the language split across public repositories
   README.md             the block between <!--LIVE:start--> and <!--LIVE:end-->
 
@@ -12,8 +12,9 @@ If the API is unreachable or returns something unexpected the script exits 0
 without touching any file, so a bad morning at GitHub never leaves a broken
 README behind.
 
-    python3 scripts/refresh.py               # live
-    python3 scripts/refresh.py --fixture f   # render from a saved payload
+    python3 scripts/refresh.py                  # live
+    python3 scripts/refresh.py --fixture f.json # render from a saved payload
+    python3 scripts/refresh.py --dump f.json    # save what the API returned
 """
 
 from __future__ import annotations
@@ -24,6 +25,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -31,106 +33,131 @@ USER = "nhmTri"
 API = "https://api.github.com"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-FEATURED = [
-    "voucher-abuse-detection",
-    "rfm-segmentation-sql",
-    "Job_realtime",
-    "FPT_processing_bigdata",
-]
+# repo -> the workflow file whose result is worth putting on the profile.
+# Deliberately the TEST workflow, not "whatever ran last" — a deployment
+# workflow failing says nothing about whether the code is correct.
+FEATURED = {
+    "voucher-abuse-detection": "sql-tests.yml",
+    "rfm-segmentation-sql": "sql-tests.yml",
+    "Job_realtime": "build.yml",
+}
 
 START = "<!--LIVE:start-->"
 END = "<!--LIVE:end-->"
+WEEKS = 12
 
 
 # --------------------------------------------------------------------- fetch
-def get(path: str):
-    req = urllib.request.Request(
-        API + path,
-        headers={
-            "Accept": "application/vnd.github+json",
-            "User-Agent": "nhmTri-profile-refresh",
-            "X-GitHub-Api-Version": "2022-11-28",
-        },
-    )
-    token = os.environ.get("GITHUB_TOKEN")
-    if token:
-        req.add_header("Authorization", "Bearer " + token)
-    with urllib.request.urlopen(req, timeout=25) as r:
-        return json.loads(r.read().decode("utf-8"))
+def get(path: str, accept_202: bool = False):
+    """GET a JSON endpoint. Returns None for 404/empty, retries a 202 once.
+
+    The /stats/ endpoints answer 202 while GitHub computes them; the documented
+    behaviour is to come back shortly.
+    """
+    for attempt in (0, 1):
+        req = urllib.request.Request(
+            API + path,
+            headers={
+                "Accept": "application/vnd.github+json",
+                "User-Agent": "nhmTri-profile-refresh",
+                "X-GitHub-Api-Version": "2022-11-28",
+            },
+        )
+        token = os.environ.get("GITHUB_TOKEN")
+        if token:
+            req.add_header("Authorization", "Bearer " + token)
+        try:
+            with urllib.request.urlopen(req, timeout=25) as r:
+                if r.status == 202 and accept_202 and attempt == 0:
+                    time.sleep(6)
+                    continue
+                body = r.read().decode("utf-8").strip()
+                return json.loads(body) if body else None
+        except urllib.error.HTTPError as exc:
+            if exc.code in (403, 404, 409):      # empty repo, no such workflow, rate limit
+                return None
+            raise
+    return None
 
 
 def collect() -> dict:
-    events = []
-    for page in (1, 2, 3):
-        batch = get(f"/users/{USER}/events/public?per_page=100&page={page}")
-        if not batch:
-            break
-        events.extend(batch)
-        if len(batch) < 100:
-            break
-
-    repos = [r for r in get(f"/users/{USER}/repos?per_page=100&sort=pushed")
+    repos = [r for r in (get(f"/users/{USER}/repos?per_page=100&sort=pushed") or [])
              if not r.get("fork")]
+    names = [r["name"] for r in repos][:15]
 
-    languages = {}
-    for r in repos[:12]:
-        try:
-            for lang, size in get(f"/repos/{USER}/{r['name']}/languages").items():
-                languages[lang] = languages.get(lang, 0) + size
-        except Exception:
-            pass
+    # --- twelve weeks of commits, summed across repositories ----------------
+    # /stats/commit_activity gives 52 weeks of real commit counts. The events
+    # feed does not: it only carries recent *public push events*, lags by
+    # minutes, and drops everything older than ninety days.
+    weekly: dict[int, int] = {}
+    for name in names:
+        for w in (get(f"/repos/{USER}/{name}/stats/commit_activity", accept_202=True) or []):
+            try:
+                weekly[int(w["week"])] = weekly.get(int(w["week"]), 0) + int(w["total"])
+            except (KeyError, TypeError, ValueError):
+                continue
 
+    # --- the most recent commit in each repository --------------------------
+    recent = []
+    for name in names:
+        head = get(f"/repos/{USER}/{name}/commits?per_page=1")
+        if not head:
+            continue
+        c = head[0].get("commit") or {}
+        recent.append({
+            "repo": name,
+            "message": (c.get("message") or "").splitlines()[0].strip(),
+            "date": ((c.get("author") or {}).get("date")
+                     or (c.get("committer") or {}).get("date") or ""),
+        })
+    recent.sort(key=lambda r: r["date"], reverse=True)
+
+    # --- language split -----------------------------------------------------
+    languages: dict[str, int] = {}
+    for name in names[:12]:
+        for lang, size in (get(f"/repos/{USER}/{name}/languages") or {}).items():
+            languages[lang] = languages.get(lang, 0) + size
+
+    # --- the test workflow's verdict, per featured repository ---------------
     runs = {}
-    for name in FEATURED:
-        try:
-            data = get(f"/repos/{USER}/{name}/actions/runs?per_page=1&status=completed")
-            wr = data.get("workflow_runs") or []
-            if wr:
-                runs[name] = {"conclusion": wr[0].get("conclusion"),
-                              "name": wr[0].get("name")}
-        except Exception:
-            pass
+    for name, workflow in FEATURED.items():
+        data = get(f"/repos/{USER}/{name}/actions/workflows/{workflow}"
+                   f"/runs?branch=main&status=completed&per_page=1")
+        wr = (data or {}).get("workflow_runs") or []
+        if wr:
+            runs[name] = {"conclusion": wr[0].get("conclusion"),
+                          "workflow": wr[0].get("name") or workflow}
 
-    return {"events": events, "repos": repos, "languages": languages, "runs": runs}
+    return {"weekly": weekly, "recent": recent, "languages": languages, "runs": runs}
 
 
 # ----------------------------------------------------------------- rendering
-def esc(s: str) -> str:
+def esc(s) -> str:
     return (str(s).replace("&", "&amp;").replace("<", "&lt;")
             .replace(">", "&gt;").replace('"', "&quot;"))
 
 
-def week_buckets(events, weeks=12, today=None):
-    today = today or dt.datetime.now(dt.timezone.utc).date()
-    monday = today - dt.timedelta(days=today.weekday())
-    starts = [monday - dt.timedelta(weeks=(weeks - 1 - i)) for i in range(weeks)]
-    counts = [0] * weeks
-    for ev in events:
-        if ev.get("type") != "PushEvent":
-            continue
-        raw = ev.get("created_at") or ""
-        try:
-            day = dt.datetime.strptime(raw[:10], "%Y-%m-%d").date()
-        except ValueError:
-            continue
-        for i in range(weeks - 1, -1, -1):
-            if day >= starts[i]:
-                counts[i] += len((ev.get("payload") or {}).get("commits") or []) or 1
-                break
-    return starts, counts
+def last_weeks(weekly: dict, now: dt.datetime, n: int = WEEKS):
+    """The n most recent week buckets, oldest first, as (date, count)."""
+    if not weekly:
+        return []
+    keys = sorted(int(k) for k in weekly)
+    cutoff = int(now.timestamp())
+    keys = [k for k in keys if k <= cutoff + 7 * 86400][-n:]
+    return [(dt.datetime.fromtimestamp(k, dt.timezone.utc).date(), int(weekly[k])) for k in keys]
 
 
-def activity_svg(starts, counts) -> str:
+def activity_svg(series) -> str:
     w, h = 820, 142
     pad_l, pad_b, top = 10, 30, 38
-    n = len(counts)
+    n = max(1, len(series))
     gap = 9
     bw = (w - pad_l * 2 - gap * (n - 1)) / n
-    peak = max(counts + [1])
+    peak = max([c for _, c in series] + [1])
     usable = h - top - pad_b
 
     bars, labels = [], []
-    for i, c in enumerate(counts):
+    for i, (start, c) in enumerate(series):
         x = pad_l + i * (bw + gap)
         bh = max(3.0, usable * (c / peak))
         y = top + usable - bh
@@ -141,17 +168,17 @@ def activity_svg(starts, counts) -> str:
         )
         if c:
             bars.append(
-                f'  <text class="v" x="{x + bw / 2:.1f}" y="{y - 6:.1f}" '
-                f'text-anchor="middle" style="animation-delay:{0.3 + i * 0.055:.2f}s">{c}</text>'
+                f'  <text class="v" x="{x + bw / 2:.1f}" y="{y - 6:.1f}" text-anchor="middle" '
+                f'style="animation-delay:{0.3 + i * 0.055:.2f}s">{c}</text>'
             )
         if i % 3 == 0 or i == n - 1:
             labels.append(
                 f'  <text class="d" x="{x + bw / 2:.1f}" y="{h - 10}" '
-                f'text-anchor="middle">{starts[i].strftime("%d %b")}</text>'
+                f'text-anchor="middle">{start.strftime("%d %b")}</text>'
             )
 
-    total = sum(counts)
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}" role="img" aria-label="Commits pushed to public repositories over the last twelve weeks: {total} in total.">
+    total = sum(c for _, c in series)
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}" role="img" aria-label="Commits across public repositories over the last twelve weeks: {total} in total.">
   <style>
     :root{{color-scheme:light dark}}
     .b{{fill:#184f95;transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);
@@ -166,7 +193,7 @@ def activity_svg(starts, counts) -> str:
     @media (prefers-reduced-motion:reduce){{.b{{transform:scaleY(1);animation:none}}.v{{opacity:1;animation:none}}}}
     @media (prefers-color-scheme:dark){{.b{{fill:#5598e7}}.b.dim{{fill:#383835}}.v{{fill:#c3c2b7}}}}
   </style>
-  <text class="t" x="{pad_l}" y="11">COMMITS PUSHED, LAST 12 WEEKS &#183; {total} TOTAL</text>
+  <text class="t" x="{pad_l}" y="14">COMMITS, LAST 12 WEEKS &#183; {total} TOTAL</text>
 {chr(10).join(bars)}
 {chr(10).join(labels)}
 </svg>
@@ -175,9 +202,9 @@ def activity_svg(starts, counts) -> str:
 
 LANG_COLOR = {
     "Python": "#184f95", "Java": "#5598e7", "SQL": "#2a78d6", "PLpgSQL": "#2a78d6",
-    "Jupyter Notebook": "#898781", "Shell": "#6f6d68", "HTML": "#e8736f",
-    "JavaScript": "#b02e2d", "CSS": "#86b6ef", "Dockerfile": "#9a9890",
-    "Makefile": "#52514e", "TSQL": "#2a78d6",
+    "TSQL": "#2a78d6", "CQL": "#86b6ef", "Jupyter Notebook": "#898781",
+    "Shell": "#6f6d68", "HTML": "#e8736f", "JavaScript": "#b02e2d",
+    "CSS": "#86b6ef", "Dockerfile": "#9a9890", "Makefile": "#52514e", "Scala": "#b02e2d",
 }
 
 
@@ -228,63 +255,43 @@ def stack_svg(languages: dict) -> str:
 """
 
 
-def ago(iso: str, now=None) -> str:
-    now = now or dt.datetime.now(dt.timezone.utc)
+def ago(iso: str, now: dt.datetime) -> str:
     try:
         t = dt.datetime.strptime(iso[:19], "%Y-%m-%dT%H:%M:%S").replace(tzinfo=dt.timezone.utc)
     except ValueError:
         return ""
-    secs = (now - t).total_seconds()
+    secs = max(0, (now - t).total_seconds())
     if secs < 3600:
         return f"{int(secs // 60)}m ago"
     if secs < 86400:
         return f"{int(secs // 3600)}h ago"
     days = int(secs // 86400)
-    if days < 14:
-        return f"{days}d ago"
-    return f"{days // 7}w ago"
+    return f"{days}d ago" if days < 14 else f"{days // 7}w ago"
 
 
-def live_block(data: dict, now=None) -> str:
-    now = now or dt.datetime.now(dt.timezone.utc)
+def live_block(data: dict, now: dt.datetime) -> str:
     lines = ["", "### What moved recently", ""]
 
-    seen, rows = set(), []
-    for ev in data["events"]:
-        if ev.get("type") != "PushEvent":
-            continue
-        repo = (ev.get("repo") or {}).get("name", "")
-        short = repo.split("/")[-1]
-        if not short or short in seen:
-            continue
-        commits = (ev.get("payload") or {}).get("commits") or []
-        msg = ""
-        for c in reversed(commits):
-            m = (c.get("message") or "").splitlines()[0].strip()
-            if m and not m.lower().startswith("merge"):
-                msg = m
-                break
-        seen.add(short)
-        rows.append((short, msg, ago(ev.get("created_at", ""), now)))
-        if len(rows) == 5:
-            break
-
+    rows = [r for r in data["recent"] if r.get("message")][:5]
     if rows:
         lines += ["| | | |", "|---|---|---|"]
-        for short, msg, when in rows:
-            msg = (msg[:68] + "…") if len(msg) > 69 else (msg or "—")
+        for r in rows:
+            msg = r["message"]
+            msg = (msg[:68] + "…") if len(msg) > 69 else msg
             lines.append(
-                f"| **[{short}](https://github.com/{USER}/{short})** | {msg} | `{when}` |"
+                f"| **[{r['repo']}](https://github.com/{USER}/{r['repo']})** "
+                f"| {msg} | `{ago(r['date'], now)}` |"
             )
     else:
-        lines.append("_Nothing pushed publicly in the last ninety days._")
+        lines.append("_Nothing public to report today._")
 
     checks = []
     for name in FEATURED:
         run = data["runs"].get(name)
         if not run:
             continue
-        mark = {"success": "passing", "failure": "failing"}.get(run["conclusion"], run["conclusion"] or "—")
+        mark = {"success": "passing", "failure": "failing"}.get(
+            run.get("conclusion"), run.get("conclusion") or "unknown")
         colour = {"passing": "1F7A5A", "failing": "C0392B"}.get(mark, "898781")
         checks.append(
             f"[![{name}](https://img.shields.io/badge/{name.replace('-', '--')}-{mark}-{colour}"
@@ -296,7 +303,7 @@ def live_block(data: dict, now=None) -> str:
 
     lines += [
         "",
-        '<img src="assets/activity.svg" alt="Commits pushed to public repositories over the last twelve weeks" width="100%">',
+        '<img src="assets/activity.svg" alt="Commits across public repositories over the last twelve weeks" width="100%">',
         "",
         '<img src="assets/stack.svg" alt="Language split across public repositories" width="100%">',
         "",
@@ -311,13 +318,13 @@ def live_block(data: dict, now=None) -> str:
 def splice(readme: str, block: str) -> str:
     if START not in readme or END not in readme:
         raise SystemExit("README is missing the LIVE markers — refusing to guess where to write.")
-    pattern = re.compile(re.escape(START) + r".*?" + re.escape(END), re.S)
-    return pattern.sub(START + block + END, readme)
+    return re.sub(re.escape(START) + r".*?" + re.escape(END), START + block + END, readme, flags=re.S)
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--fixture", help="a saved JSON payload, for offline testing")
+    ap.add_argument("--dump", help="save what the API returned, for offline testing")
     ap.add_argument("--now", help="ISO timestamp to treat as now, for reproducible tests")
     args = ap.parse_args()
 
@@ -327,18 +334,25 @@ def main() -> int:
     if args.fixture:
         with open(args.fixture, encoding="utf-8") as fh:
             data = json.load(fh)
+        data["weekly"] = {int(k): v for k, v in data.get("weekly", {}).items()}
     else:
         try:
             data = collect()
-        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, ValueError) as exc:
+        except (urllib.error.URLError, TimeoutError, ValueError, OSError) as exc:
             print(f"GitHub API unreachable ({exc}) — leaving every file as it is.", file=sys.stderr)
             return 0
+        if args.dump:
+            with open(args.dump, "w", encoding="utf-8") as fh:
+                json.dump(data, fh, indent=1)
 
-    starts, counts = week_buckets(data["events"], today=now.date())
+    series = last_weeks(data["weekly"], now)
+    if not series:
+        print("No weekly commit data came back — leaving every file as it is.", file=sys.stderr)
+        return 0
 
     os.makedirs(os.path.join(ROOT, "assets"), exist_ok=True)
     out = {
-        os.path.join(ROOT, "assets", "activity.svg"): activity_svg(starts, counts),
+        os.path.join(ROOT, "assets", "activity.svg"): activity_svg(series),
         os.path.join(ROOT, "assets", "stack.svg"): stack_svg(data["languages"]),
     }
     readme_path = os.path.join(ROOT, "README.md")
