@@ -1,0 +1,40 @@
+name: refresh profile
+
+on:
+  schedule:
+    - cron: '23 1 * * *'      # every morning, 08:23 Hanoi time
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    # the job pushes a commit, so ignore the push it caused itself
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Regenerate the live block and the two charts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/refresh.py
+
+      - name: Commit, but only if something actually changed
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "nothing changed today"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md assets/activity.svg assets/stack.svg
+          git commit -m "chore: refresh the live profile block"
+          git push
