@@ -1,4 +1,4 @@
-<img src="assets/header.svg" alt="Nguyen Hoang Minh Tri - Operations Data Analyst" width="100%">
+<img src="header.svg" alt="Nguyen Hoang Minh Tri - Operations Data Analyst" width="100%">
 
 **Operations Data Analyst at NielsenIQ.** I work on the part of analytics most people skip: deciding whether a number is allowed to leave the building.
 
