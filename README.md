@@ -6,6 +6,18 @@ At NielsenIQ I own the quality gate every project passes before hand-over — th
 
 Outside work I build the pipelines behind the analysis — Spark at 10M rows, Kafka streaming, fraud rule design, portfolio analytics.
 
+
+<p align="center">
+  <a href="https://nhmtri.github.io/">
+    <img src="assets/site-card.svg" width="86%"
+         alt="A browser window showing nhmtri.github.io: the portfolio of Nguyen Hoang Minh Tri, with the quality gate, three project cards and a button reading open the live site">
+  </a>
+</p>
+
+<p align="center">
+  <sub><b>The whole thing is at <a href="https://nhmtri.github.io/">nhmtri.github.io</a></b> — the quality gate, the field-work story told through one interviewer, and seven projects with their diagrams and their numbers.</sub>
+</p>
+
 ---
 
 **Now** · data quality rules, automation, agentic AI workflows
@@ -23,25 +35,9 @@ Outside work I build the pipelines behind the analysis — Spark at 10M rows, Ka
 ---
 
 <!--LIVE:start-->
-### What moved recently
 
-| | | |
-|---|---|---|
-| **[nhmTri](https://github.com/nhmTri/nhmTri)** | fix: read commit history and the test workflow, not the events feed | `0m ago` |
-| **[nhmTri.github.io](https://github.com/nhmTri/nhmTri.github.io)** | feat: publish the portfolio, animated recognition section and all | `0m ago` |
-| **[Brazilian_E_Commerce](https://github.com/nhmTri/Brazilian_E_Commerce)** | docs: architecture diagram, English README, licence and a cluster-fr… | `3h ago` |
-| **[Job_realtime](https://github.com/nhmTri/Job_realtime)** | docs: animate the architecture diagram | `3h ago` |
-| **[rfm-segmentation-sql](https://github.com/nhmTri/rfm-segmentation-sql)** | feat: animated segment matrix and an interactive cut-off demo on Pag… | `3h ago` |
+_The live block — what moved recently, CI status, twelve weeks of commits and the language split — is written here by [`scripts/refresh.py`](scripts/refresh.py) on the first run of the workflow, then every morning after that._
 
-### Every repository below runs its own tests
-
-[![voucher-abuse-detection](https://img.shields.io/badge/voucher--abuse--detection-passing-1F7A5A?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/nhmTri/voucher-abuse-detection/actions) [![rfm-segmentation-sql](https://img.shields.io/badge/rfm--segmentation--sql-passing-1F7A5A?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/nhmTri/rfm-segmentation-sql/actions) [![Job_realtime](https://img.shields.io/badge/Job_realtime-passing-1F7A5A?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/nhmTri/Job_realtime/actions) [![Brazilian_E_Commerce](https://img.shields.io/badge/Brazilian_E_Commerce-passing-1F7A5A?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/nhmTri/Brazilian_E_Commerce/actions)
-
-<img src="assets/activity.svg" alt="Commits across public repositories over the last twelve weeks" width="100%">
-
-<img src="assets/stack.svg" alt="Language split across public repositories" width="100%">
-
-<sub>Regenerated from the GitHub API every morning · last run 01 Oct 2026, 17:38 UTC</sub>
 <!--LIVE:end-->
 
 ---
@@ -54,6 +50,9 @@ Not a screenshot — a page where you move the thresholds and watch the answer c
 |---|---|
 | **[Voucher abuse detection](https://nhmtri.github.io/voucher-abuse-detection/)** | Nine abuse pairs are planted in the data. Move the four rule thresholds and the page scores you: how many rings caught, how many ordinary customers swept in with them. |
 | **[RFM segmentation](https://nhmtri.github.io/rfm-segmentation-sql/)** | Drag the cut-offs; the grid recolours, the revenue split moves, and the SQL rewrites itself underneath. |
+
+Both also open in **GitHub Codespaces** with PostgreSQL 16 running and the sample loaded — one
+button, no install, `make test` and you see the rule fire.
 
 ### Selected work
 

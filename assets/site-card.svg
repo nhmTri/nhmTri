@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 440" width="840" height="440" role="img" aria-label="A browser window showing nhmtri.github.io: the portfolio of Nguyen Hoang Minh Tri, with a quality gate, three project cards and a button reading open the live site.">
+  <style>
+    :root{color-scheme:light dark}
+    .win{fill:#ffffff;stroke:#d6dbe6;stroke-width:1.5}
+    .bar{fill:#f2f4f8}
+    .pill{fill:#ffffff;stroke:#d6dbe6;stroke-width:1}
+    .url{font:500 12px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8a8880}
+    .nm{font:700 27px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#1b2030;letter-spacing:-.01em}
+    .rl{font:600 11px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#184f95;letter-spacing:.18em}
+    .ln{font:400 12.5px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#52514e}
+    .tg{font:600 8.5px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8a8880;letter-spacing:.16em}
+    .ct{font:700 12.5px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#1b2030}
+    .cs{font:400 11px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8a8880}
+    .cd{fill:#fbfcfe;stroke:#e4e8f0;stroke-width:1}
+    .cta{font:700 13px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#ffffff}
+    .rule{stroke:#e4e8f0;stroke-width:1}
+
+    .card{opacity:0;animation:rise .6s cubic-bezier(.3,1.1,.5,1) forwards}
+    @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+    .fade{opacity:0;animation:fd .6s ease-out forwards}
+    @keyframes fd{to{opacity:1}}
+
+    .pk{animation:run 4.4s linear infinite}
+    @keyframes run{0%{transform:translateX(0)}100%{transform:translateX(610px)}}
+    .pk.bad{animation:drp 4.4s cubic-bezier(.3,0,.3,1) infinite}
+    @keyframes drp{
+      0%{transform:translateX(0) translateY(0)}
+      42%{transform:translateX(252px) translateY(0)}
+      54%{transform:translateX(258px) translateY(23px)}
+      100%{transform:translateX(258px) translateY(23px)}
+    }
+    .gate{fill:none;stroke:#184f95;stroke-width:1.6;stroke-dasharray:3 3.5;
+          animation:sl 1.6s linear infinite}
+    @keyframes sl{to{stroke-dashoffset:-13}}
+    .glow{animation:gl 2.6s ease-in-out infinite}
+    @keyframes gl{0%,100%{opacity:.1}50%{opacity:.26}}
+
+    .btn{animation:bt 2.8s ease-in-out infinite}
+    @keyframes bt{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+    .arw{animation:ar 2.8s ease-in-out infinite}
+    @keyframes ar{0%,100%{transform:translateX(0)}50%{transform:translateX(3px)}}
+
+    @media (prefers-reduced-motion:reduce){
+      .card,.fade{opacity:1;animation:none}
+      .pk,.gate,.glow,.btn,.arw{animation:none}
+      .pk.bad{transform:translateX(258px) translateY(23px)}
+    }
+    @media (prefers-color-scheme:dark){
+      .win{fill:#15181d;stroke:#2b3443} .bar{fill:#1d2129}
+      .pill{fill:#15181d;stroke:#2b3443} .cd{fill:#191d24;stroke:#283040}
+      .nm,.ct{fill:#e8ecf4} .ln{fill:#c3c2b7} .rule{stroke:#283040}
+      .rl{fill:#5598e7}
+    }
+  </style>
+
+  <rect class="win" x="8" y="8" width="824" height="424" rx="14"/>
+  <path class="bar" d="M8 22 a14 14 0 0 1 14 -14 h796 a14 14 0 0 1 14 14 v26 h-824 Z"/>
+  <line class="rule" x1="8" y1="48" x2="832" y2="48"/>
+  <circle cx="32" cy="28" r="5" fill="#e8736f"/>
+  <circle cx="50" cy="28" r="5" fill="#e5b84b"/>
+  <circle cx="68" cy="28" r="5" fill="#6cc289"/>
+  <rect class="pill" x="92" y="18" width="320" height="21" rx="10.5"/>
+  <path d="M105 25 v-2.2 a3 3 0 0 1 6 0 V25" fill="none" stroke="#8a8880" stroke-width="1.3"/>
+  <rect x="103.5" y="25" width="9" height="7" rx="1.6" fill="none" stroke="#8a8880" stroke-width="1.3"/>
+  <text class="url" x="121" y="33">nhmtri.github.io</text>
+
+  <text class="rl fade" x="96" y="104" style="animation-delay:.1s">OPERATIONS DATA ANALYST</text>
+  <text class="nm fade" x="96" y="140" style="animation-delay:.2s">Nguyen Hoang Minh Tri</text>
+  <text class="ln fade" x="96" y="166" style="animation-delay:.3s">I decide whether a number is allowed to leave the building.</text>
+
+  <text class="tg fade" x="96" y="212" style="animation-delay:.5s">FIELDWORK</text>
+  <text class="tg fade" x="640" y="212" style="animation-delay:.5s">HAND-OVER</text>
+  <line class="rule" x1="96" y1="238" x2="744" y2="238"/>
+  <rect class="glow" x="352" y="216" width="30" height="46" rx="6" fill="#184f95"/>
+  <path class="gate" d="M352 216 h30 v46 h-30 Z"/>
+  <rect class="pk" x="100" y="232" width="13" height="11" rx="2.5" fill="#5598e7" style="animation-delay:0s"/>
+  <rect class="pk" x="100" y="232" width="13" height="11" rx="2.5" fill="#5598e7" style="animation-delay:-0.9s"/>
+  <rect class="pk" x="100" y="232" width="13" height="11" rx="2.5" fill="#5598e7" style="animation-delay:-1.8s"/>
+  <rect class="pk" x="100" y="232" width="13" height="11" rx="2.5" fill="#5598e7" style="animation-delay:-2.7s"/>
+  <rect class="pk bad" x="100" y="232" width="13" height="11" rx="2.5" fill="#b02e2d" style="animation-delay:-1.35s"/>
+  <text class="tg fade" x="367" y="286" text-anchor="middle" style="animation-delay:.9s" fill="#b02e2d">HELD FOR REVIEW</text>
+
+  <g class="card" style="animation-delay:1.15s">
+    <rect x="96" y="300" width="228" height="86" rx="9" class="cd"/>
+    <rect x="96" y="300" width="228" height="3.5" rx="2" fill="#b02e2d"/>
+    <text class="ct" x="112" y="332">voucher abuse</text>
+    <text class="cs" x="112" y="352">9 pairs · 100% precision</text>
+    <rect x="112" y="364" width="76" height="5" rx="2.5" fill="#b02e2d" opacity=".3"/>
+  </g>
+  <g class="card" style="animation-delay:1.29s">
+    <rect x="344" y="300" width="228" height="86" rx="9" class="cd"/>
+    <rect x="344" y="300" width="228" height="3.5" rx="2" fill="#184f95"/>
+    <text class="ct" x="360" y="332">rfm segments</text>
+    <text class="cs" x="360" y="352">champions +39%</text>
+    <rect x="360" y="364" width="76" height="5" rx="2.5" fill="#184f95" opacity=".3"/>
+  </g>
+  <g class="card" style="animation-delay:1.43s">
+    <rect x="592" y="300" width="228" height="86" rx="9" class="cd"/>
+    <rect x="592" y="300" width="228" height="3.5" rx="2" fill="#5598e7"/>
+    <text class="ct" x="608" y="332">streaming</text>
+    <text class="cs" x="608" y="352">2 sources · replayable</text>
+    <rect x="608" y="364" width="76" height="5" rx="2.5" fill="#5598e7" opacity=".3"/>
+  </g>
+
+  <g class="btn">
+    <rect x="556" y="100" width="188" height="42" rx="21" fill="#184f95"/>
+    <text class="cta" x="582" y="126">Open the live site</text>
+    <g class="arw"><path d="M714 121 h12 M721 115 l6 6 l-6 6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  </g>
+</svg>
