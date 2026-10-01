@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 142" width="820" height="142" role="img" aria-label="Commits pushed to public repositories over the last twelve weeks: 3 in total.">
+  <style>
+    :root{color-scheme:light dark}
+    .b{fill:#184f95;transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);
+       animation:g .6s cubic-bezier(.2,.7,.3,1) forwards}
+    .b.dim{fill:#c3c2b7;opacity:.5}
+    @keyframes g{to{transform:scaleY(1)}}
+    .v{font:600 10px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#52514e;
+       opacity:0;animation:f .4s ease-out forwards}
+    @keyframes f{to{opacity:1}}
+    .d{font:500 9.5px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8a8880}
+    .t{font:600 9.5px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8a8880;letter-spacing:.16em}
+    @media (prefers-reduced-motion:reduce){.b{transform:scaleY(1);animation:none}.v{opacity:1;animation:none}}
+    @media (prefers-color-scheme:dark){.b{fill:#5598e7}.b.dim{fill:#383835}.v{fill:#c3c2b7}}
+  </style>
+  <text class="t" x="10" y="11">COMMITS PUSHED, LAST 12 WEEKS &#183; 3 TOTAL</text>
+  <rect class="b dim" x="10.0" y="109.0" width="58.4" height="3.0" rx="3" style="animation-delay:0.00s"/>
+  <rect class="b dim" x="77.4" y="109.0" width="58.4" height="3.0" rx="3" style="animation-delay:0.06s"/>
+  <rect class="b dim" x="144.8" y="109.0" width="58.4" height="3.0" rx="3" style="animation-delay:0.11s"/>
+  <rect class="b dim" x="212.2" y="109.0" width="58.4" height="3.0" rx="3" style="animation-delay:0.17s"/>
+  <rect class="b dim" x="279.7" y="109.0" width="58.4" height="3.0" rx="3" style="animation-delay:0.22s"/>
+  <rect class="b dim" x="347.1" y="109.0" width="58.4" height="3.0" rx="3" style="animation-delay:0.28s"/>
+  <rect class="b dim" x="414.5" y="109.0" width="58.4" height="3.0" rx="3" style="animation-delay:0.33s"/>
+  <rect class="b dim" x="481.9" y="109.0" width="58.4" height="3.0" rx="3" style="animation-delay:0.39s"/>
+  <rect class="b dim" x="549.3" y="109.0" width="58.4" height="3.0" rx="3" style="animation-delay:0.44s"/>
+  <rect class="b dim" x="616.7" y="109.0" width="58.4" height="3.0" rx="3" style="animation-delay:0.49s"/>
+  <rect class="b dim" x="684.2" y="109.0" width="58.4" height="3.0" rx="3" style="animation-delay:0.55s"/>
+  <rect class="b" x="751.6" y="38.0" width="58.4" height="74.0" rx="3" style="animation-delay:0.60s"/>
+  <text class="v" x="780.8" y="32.0" text-anchor="middle" style="animation-delay:0.91s">3</text>
+  <text class="d" x="39.2" y="132" text-anchor="middle">13 Jul</text>
+  <text class="d" x="241.5" y="132" text-anchor="middle">03 Aug</text>
+  <text class="d" x="443.7" y="132" text-anchor="middle">24 Aug</text>
+  <text class="d" x="646.0" y="132" text-anchor="middle">14 Sep</text>
+  <text class="d" x="780.8" y="132" text-anchor="middle">28 Sep</text>
+</svg>
