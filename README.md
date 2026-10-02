@@ -39,11 +39,11 @@ Outside work I build the pipelines behind the analysis — Spark at 10M rows, Ka
 
 | | | |
 |---|---|---|
-| **[nhmTri](https://github.com/nhmTri/nhmTri)** | fix: read commit history and the test workflow, not the events feed | `0m ago` |
-| **[Brazilian_E_Commerce](https://github.com/nhmTri/Brazilian_E_Commerce)** | docs: architecture diagram, English README, licence and a cluster-fr… | `0m ago` |
-| **[Job_realtime](https://github.com/nhmTri/Job_realtime)** | docs: animate the architecture diagram | `0m ago` |
-| **[rfm-segmentation-sql](https://github.com/nhmTri/rfm-segmentation-sql)** | feat: Codespaces, a re-runnable sample, the animated matrix and the … | `0m ago` |
-| **[voucher-abuse-detection](https://github.com/nhmTri/voucher-abuse-detection)** | feat: Codespaces, a re-runnable sample, the animated diagram and the… | `0m ago` |
+| **[nhmTri](https://github.com/nhmTri/nhmTri)** | chore: refresh the live profile block | `12h ago` |
+| **[Brazilian_E_Commerce](https://github.com/nhmTri/Brazilian_E_Commerce)** | docs: architecture diagram, English README, licence and a cluster-fr… | `12h ago` |
+| **[Job_realtime](https://github.com/nhmTri/Job_realtime)** | docs: animate the architecture diagram | `12h ago` |
+| **[rfm-segmentation-sql](https://github.com/nhmTri/rfm-segmentation-sql)** | feat: Codespaces, a re-runnable sample, the animated matrix and the … | `12h ago` |
+| **[voucher-abuse-detection](https://github.com/nhmTri/voucher-abuse-detection)** | feat: Codespaces, a re-runnable sample, the animated diagram and the… | `12h ago` |
 
 ### Every repository below runs its own tests
 
@@ -53,7 +53,7 @@ Outside work I build the pipelines behind the analysis — Spark at 10M rows, Ka
 
 <img src="assets/stack.svg" alt="Language split across public repositories" width="100%">
 
-<sub>Regenerated from the GitHub API every morning · last run 01 Oct 2026, 18:06 UTC</sub>
+<sub>Regenerated from the GitHub API every morning · last run 02 Oct 2026, 07:03 UTC</sub>
 <!--LIVE:end-->
 
 ---
