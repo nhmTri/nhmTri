@@ -10,8 +10,8 @@
     @media (prefers-color-scheme:dark){.l{fill:#c3c2b7}}
   </style>
   <text class="t" x="10" y="14">WHAT THE PUBLIC REPOSITORIES ARE WRITTEN IN</text>
-  <rect class="s" x="10.0" y="26" width="404.3" height="16" rx="3" fill="#e8736f" style="animation-delay:0.00s"/>
-  <rect class="s" x="416.3" y="26" width="302.8" height="16" rx="3" fill="#898781" style="animation-delay:0.08s"/>
+  <rect class="s" x="10.0" y="26" width="404.4" height="16" rx="3" fill="#e8736f" style="animation-delay:0.00s"/>
+  <rect class="s" x="416.4" y="26" width="302.7" height="16" rx="3" fill="#898781" style="animation-delay:0.08s"/>
   <rect class="s" x="721.1" y="26" width="62.9" height="16" rx="3" fill="#5598e7" style="animation-delay:0.16s"/>
   <rect class="s" x="786.0" y="26" width="18.4" height="16" rx="3" fill="#184f95" style="animation-delay:0.24s"/>
   <rect class="s" x="806.4" y="26" width="3.0" height="16" rx="3" fill="#6f6d68" style="animation-delay:0.32s"/>
