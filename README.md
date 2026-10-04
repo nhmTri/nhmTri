@@ -41,11 +41,11 @@ Outside work I build the pipelines behind the analysis — Spark at 10M rows, Ka
 
 | | | |
 |---|---|---|
-| **[nhmTri](https://github.com/nhmTri/nhmTri)** | fix: read commit history and the test workflow, not the events feed | `0m ago` |
-| **[nhmTri.github.io](https://github.com/nhmTri/nhmTri.github.io)** | feat: publish the portfolio, animated recognition section and all | `16m ago` |
-| **[rfm-segmentation-sql](https://github.com/nhmTri/rfm-segmentation-sql)** | feat: Codespaces, a re-runnable sample, the animated matrix and the … | `16m ago` |
-| **[voucher-abuse-detection](https://github.com/nhmTri/voucher-abuse-detection)** | feat: Codespaces, a re-runnable sample, the animated diagram and the… | `16m ago` |
-| **[Brazilian_E_Commerce](https://github.com/nhmTri/Brazilian_E_Commerce)** | docs: architecture diagram, English README, licence and a cluster-fr… | `2d ago` |
+| **[nhmTri](https://github.com/nhmTri/nhmTri)** | chore: refresh the live profile block | `1h ago` |
+| **[nhmTri.github.io](https://github.com/nhmTri/nhmTri.github.io)** | feat: publish the portfolio, animated recognition section and all | `1h ago` |
+| **[rfm-segmentation-sql](https://github.com/nhmTri/rfm-segmentation-sql)** | feat: Codespaces, a re-runnable sample, the animated matrix and the … | `1h ago` |
+| **[voucher-abuse-detection](https://github.com/nhmTri/voucher-abuse-detection)** | feat: Codespaces, a re-runnable sample, the animated diagram and the… | `1h ago` |
+| **[FPT_processing_bigdata](https://github.com/nhmTri/FPT_processing_bigdata)** | feat: CI with a data contract and a leak guard, real requirements.txt | `1h ago` |
 
 ### Every repository below runs its own tests
 
@@ -55,7 +55,7 @@ Outside work I build the pipelines behind the analysis — Spark at 10M rows, Ka
 
 <img src="assets/stack.svg" alt="Language split across public repositories" width="100%">
 
-<sub>Regenerated from the GitHub API every morning · last run 04 Oct 2026, 05:52 UTC</sub>
+<sub>Regenerated from the GitHub API every morning · last run 04 Oct 2026, 06:59 UTC</sub>
 <!--LIVE:end-->
 
 ---

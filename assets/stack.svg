@@ -10,17 +10,17 @@
     @media (prefers-color-scheme:dark){.l{fill:#c3c2b7}}
   </style>
   <text class="t" x="10" y="14">WHAT THE PUBLIC REPOSITORIES ARE WRITTEN IN</text>
-  <rect class="s" x="10.0" y="26" width="572.0" height="16" rx="3" fill="#e8736f" style="animation-delay:0.00s"/>
-  <rect class="s" x="584.0" y="26" width="114.7" height="16" rx="3" fill="#898781" style="animation-delay:0.08s"/>
-  <rect class="s" x="700.7" y="26" width="77.8" height="16" rx="3" fill="#5598e7" style="animation-delay:0.16s"/>
-  <rect class="s" x="780.5" y="26" width="22.4" height="16" rx="3" fill="#184f95" style="animation-delay:0.24s"/>
-  <rect class="s" x="804.9" y="26" width="3.0" height="16" rx="3" fill="#6f6d68" style="animation-delay:0.32s"/>
-  <rect class="s" x="809.9" y="26" width="3.0" height="16" rx="3" fill="#52514e" style="animation-delay:0.40s"/>
-  <rect class="s" x="814.9" y="26" width="3.0" height="16" rx="3" fill="#898781" style="animation-delay:0.48s"/>
-  <circle cx="15.0" cy="70" r="4.5" fill="#e8736f"/><text class="l" x="26.0" y="74">HTML 72%</text>
+  <rect class="s" x="10.0" y="26" width="549.8" height="16" rx="3" fill="#e8736f" style="animation-delay:0.00s"/>
+  <rect class="s" x="561.8" y="26" width="121.4" height="16" rx="3" fill="#898781" style="animation-delay:0.08s"/>
+  <rect class="s" x="685.2" y="26" width="85.8" height="16" rx="3" fill="#5598e7" style="animation-delay:0.16s"/>
+  <rect class="s" x="772.9" y="26" width="30.2" height="16" rx="3" fill="#184f95" style="animation-delay:0.24s"/>
+  <rect class="s" x="805.1" y="26" width="3.0" height="16" rx="3" fill="#6f6d68" style="animation-delay:0.32s"/>
+  <rect class="s" x="810.1" y="26" width="3.0" height="16" rx="3" fill="#52514e" style="animation-delay:0.40s"/>
+  <rect class="s" x="815.1" y="26" width="3.0" height="16" rx="3" fill="#898781" style="animation-delay:0.48s"/>
+  <circle cx="15.0" cy="70" r="4.5" fill="#e8736f"/><text class="l" x="26.0" y="74">HTML 69%</text>
   <circle cx="85.8" cy="70" r="4.5" fill="#898781"/><text class="l" x="96.8" y="74">Jupyter Notebook 15%</text>
-  <circle cx="229.8" cy="70" r="4.5" fill="#5598e7"/><text class="l" x="240.8" y="74">Java 10%</text>
-  <circle cx="300.6" cy="70" r="4.5" fill="#184f95"/><text class="l" x="311.6" y="74">Python 3%</text>
+  <circle cx="229.8" cy="70" r="4.5" fill="#5598e7"/><text class="l" x="240.8" y="74">Java 11%</text>
+  <circle cx="300.6" cy="70" r="4.5" fill="#184f95"/><text class="l" x="311.6" y="74">Python 4%</text>
   <circle cx="377.5" cy="70" r="4.5" fill="#6f6d68"/><text class="l" x="388.5" y="74">Shell 0%</text>
   <circle cx="448.3" cy="70" r="4.5" fill="#52514e"/><text class="l" x="459.3" y="74">Makefile 0%</text>
   <circle cx="537.4" cy="70" r="4.5" fill="#898781"/><text class="l" x="548.4" y="74">Other 0%</text>
