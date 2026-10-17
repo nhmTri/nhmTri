@@ -42,10 +42,10 @@ Outside work I build the pipelines behind the analysis — Spark at 10M rows, Ka
 | | | |
 |---|---|---|
 | **[nhmTri](https://github.com/nhmTri/nhmTri)** | chore: refresh the live profile block | `23h ago` |
-| **[nhmTri.github.io](https://github.com/nhmTri/nhmTri.github.io)** | feat: publish the portfolio, animated recognition section and all | `12d ago` |
-| **[rfm-segmentation-sql](https://github.com/nhmTri/rfm-segmentation-sql)** | feat: Codespaces, a re-runnable sample, the animated matrix and the … | `12d ago` |
-| **[voucher-abuse-detection](https://github.com/nhmTri/voucher-abuse-detection)** | feat: Codespaces, a re-runnable sample, the animated diagram and the… | `12d ago` |
-| **[FPT_processing_bigdata](https://github.com/nhmTri/FPT_processing_bigdata)** | feat: CI with a data contract and a leak guard, real requirements.txt | `12d ago` |
+| **[nhmTri.github.io](https://github.com/nhmTri/nhmTri.github.io)** | feat: publish the portfolio, animated recognition section and all | `13d ago` |
+| **[rfm-segmentation-sql](https://github.com/nhmTri/rfm-segmentation-sql)** | feat: Codespaces, a re-runnable sample, the animated matrix and the … | `13d ago` |
+| **[voucher-abuse-detection](https://github.com/nhmTri/voucher-abuse-detection)** | feat: Codespaces, a re-runnable sample, the animated diagram and the… | `13d ago` |
+| **[FPT_processing_bigdata](https://github.com/nhmTri/FPT_processing_bigdata)** | feat: CI with a data contract and a leak guard, real requirements.txt | `13d ago` |
 
 ### Every repository below runs its own tests
 
@@ -55,7 +55,7 @@ Outside work I build the pipelines behind the analysis — Spark at 10M rows, Ka
 
 <img src="assets/stack.svg" alt="Language split across public repositories" width="100%">
 
-<sub>Regenerated from the GitHub API every morning · last run 16 Oct 2026, 05:54 UTC</sub>
+<sub>Regenerated from the GitHub API every morning · last run 17 Oct 2026, 05:38 UTC</sub>
 <!--LIVE:end-->
 
 ---
