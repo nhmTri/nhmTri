@@ -41,11 +41,11 @@ Outside work I build the pipelines behind the analysis — Spark at 10M rows, Ka
 
 | | | |
 |---|---|---|
-| **[nhmTri](https://github.com/nhmTri/nhmTri)** | chore: refresh the live profile block | `23h ago` |
-| **[nhmTri.github.io](https://github.com/nhmTri/nhmTri.github.io)** | feat: publish the portfolio, animated recognition section and all | `2w ago` |
-| **[rfm-segmentation-sql](https://github.com/nhmTri/rfm-segmentation-sql)** | feat: Codespaces, a re-runnable sample, the animated matrix and the … | `2w ago` |
-| **[voucher-abuse-detection](https://github.com/nhmTri/voucher-abuse-detection)** | feat: Codespaces, a re-runnable sample, the animated diagram and the… | `2w ago` |
-| **[FPT_processing_bigdata](https://github.com/nhmTri/FPT_processing_bigdata)** | feat: CI with a data contract and a leak guard, real requirements.txt | `2w ago` |
+| **[nhmTri](https://github.com/nhmTri/nhmTri)** | chore: refresh the live profile block | `1d ago` |
+| **[nhmTri.github.io](https://github.com/nhmTri/nhmTri.github.io)** | feat: publish the portfolio, animated recognition section and all | `3w ago` |
+| **[rfm-segmentation-sql](https://github.com/nhmTri/rfm-segmentation-sql)** | feat: Codespaces, a re-runnable sample, the animated matrix and the … | `3w ago` |
+| **[voucher-abuse-detection](https://github.com/nhmTri/voucher-abuse-detection)** | feat: Codespaces, a re-runnable sample, the animated diagram and the… | `3w ago` |
+| **[FPT_processing_bigdata](https://github.com/nhmTri/FPT_processing_bigdata)** | feat: CI with a data contract and a leak guard, real requirements.txt | `3w ago` |
 
 ### Every repository below runs its own tests
 
@@ -55,7 +55,7 @@ Outside work I build the pipelines behind the analysis — Spark at 10M rows, Ka
 
 <img src="assets/stack.svg" alt="Language split across public repositories" width="100%">
 
-<sub>Regenerated from the GitHub API every morning · last run 24 Oct 2026, 05:58 UTC</sub>
+<sub>Regenerated from the GitHub API every morning · last run 25 Oct 2026, 06:13 UTC</sub>
 <!--LIVE:end-->
 
 ---
