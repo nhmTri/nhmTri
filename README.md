@@ -55,7 +55,7 @@ Outside work I build the pipelines behind the analysis — Spark at 10M rows, Ka
 
 <img src="assets/stack.svg" alt="Language split across public repositories" width="100%">
 
-<sub>Regenerated from the GitHub API every morning · last run 29 Oct 2026, 07:11 UTC</sub>
+<sub>Regenerated from the GitHub API every morning · last run 30 Oct 2026, 07:14 UTC</sub>
 <!--LIVE:end-->
 
 ---
