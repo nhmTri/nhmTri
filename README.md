@@ -41,7 +41,7 @@ Outside work I build the pipelines behind the analysis — Spark at 10M rows, Ka
 
 | | | |
 |---|---|---|
-| **[nhmTri](https://github.com/nhmTri/nhmTri)** | chore: refresh the live profile block | `23h ago` |
+| **[nhmTri](https://github.com/nhmTri/nhmTri)** | chore: refresh the live profile block | `2d ago` |
 | **[nhmTri.github.io](https://github.com/nhmTri/nhmTri.github.io)** | feat: publish the portfolio, animated recognition section and all | `5w ago` |
 | **[rfm-segmentation-sql](https://github.com/nhmTri/rfm-segmentation-sql)** | feat: Codespaces, a re-runnable sample, the animated matrix and the … | `5w ago` |
 | **[voucher-abuse-detection](https://github.com/nhmTri/voucher-abuse-detection)** | feat: Codespaces, a re-runnable sample, the animated diagram and the… | `5w ago` |
@@ -55,7 +55,7 @@ Outside work I build the pipelines behind the analysis — Spark at 10M rows, Ka
 
 <img src="assets/stack.svg" alt="Language split across public repositories" width="100%">
 
-<sub>Regenerated from the GitHub API every morning · last run 11 Nov 2026, 07:46 UTC</sub>
+<sub>Regenerated from the GitHub API every morning · last run 13 Nov 2026, 08:05 UTC</sub>
 <!--LIVE:end-->
 
 ---
